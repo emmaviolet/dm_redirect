@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "DM Redirect",
   "description": "Blocks selected sites by redirecting to another site of your choice.",
   "version": "0.6",
