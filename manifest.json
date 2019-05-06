@@ -4,8 +4,9 @@
   "description": "Blocks selected sites by redirecting to another site of your choice.",
   "version": "0.5",
   "permissions": [
-    "tabs",
-    "storage"
+    "notifications",
+    "storage",
+    "tabs"
   ],
   "background": {
     "scripts": ["background.js"],
