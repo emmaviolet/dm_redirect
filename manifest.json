@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "DM Redirect",
+  "description": "Blocks selected sites by redirecting to another site of your choice.",
+  "version": "0.5",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup" : "popup.html",
+    "default_icon": "redirect_icon.png"
+  }
+}
