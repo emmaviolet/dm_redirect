@@ -1,10 +1,9 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 4,
   "name": "DM Redirect",
   "description": "Blocks selected sites by redirecting to another site of your choice.",
-  "version": "0.6",
+  "version": "0.7",
   "permissions": [
-    "notifications",
     "storage",
     "tabs"
   ],

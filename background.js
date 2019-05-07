@@ -17,14 +17,14 @@ chrome.tabs.onUpdated.addListener(function() {
       for (var i = 0; i < blockedSites.length; i++) {
         if (tab.url.includes(blockedSites[i])) {
           chrome.tabs.update(tab.id, {url: redirectUrl}, function(updatedTab) {
-            var notificationId = new Date().toLocaleString();
+            // var notificationId = new Date().toLocaleString();
 
-            chrome.notifications.create(notificationId, {
-              type: 'basic',
-              iconUrl: 'redirect_icon.png',
-              title: 'You\'ve been redirected',
-              message: 'Site blocked by DM Redirect'
-            });
+            // chrome.notifications.create(notificationId, {
+            //   type: 'basic',
+            //   iconUrl: 'redirect_icon.png',
+            //   title: 'You\'ve been redirected',
+            //   message: 'Site blocked by DM Redirect'
+            // });
           });
         };
       };
