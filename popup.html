@@ -1,18 +1,80 @@
-<html style="min-width:200px;">
+<html style="min-width: 350px; overflow: hidden;">
   <head>
-    <title>Blocked pages</title>
-    <link rel="stylesheet" href="Skeleton/css/skeleton.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/custom.css">
   </head>
-  <body>
-    <h5 style="margin-bottom: 5px">Blocked sites</h5>
-    <input class="u-full-width blockedSiteInput" type="text">
-    <input class="u-full-width blockedSiteInput" type="text">
-    <input class="u-full-width blockedSiteInput" type="text">
-    <input class="u-full-width blockedSiteInput" type="text">
-    <input style="margin-bottom: 20px" class="u-full-width blockedSiteInput" type="text">
-    <h5 style="margin-bottom: 5px">Redirect to</h5>
-    <input style="margin-bottom: 20px" class="u-full-width" id="redirectInput" type="text">
-    <input class="button-primary" id="saveSiteInputs" type="submit" value="Save">
+  <body id="container" class="container" style="height: 400px; overflow: scroll;">
+  <h5 id="title" style="text-align: center">DM Redirect</h5>
+
+  <!-- STATUS -->
+  <div id="status-view" style="display: none;">
+    <div class="alert-box primary">
+      <p id="blocked-sites-info" class="info-text">You have X blocked sites</p>
+      <button id="block-list-button" class="secondary-button half-width left">Show list</button>
+      <button id="block-more-button" class="alert-button half-width right">Block more</button>
+    </div>
+
+    <div class="alert-box secondary">
+      <p id="status-redirect-info" class="info-text">Your blocked sites redirect to XX</p>
+      <button id="status-redirect-change-button" class="secondary-button half-width left">Change</button>
+    </div>
+  </div>
+  <!-- STATUS -->
+
+  <!-- NOTHING BLOCKED -->
+  <div id="empty-view" style="display: none;">
+    <div class="alert-box primary">
+      <p class="info-text">You have no blocked sites</p>
+      <button id="block-sites-button" class="alert-button u-full-width">Block sites</button>
+    </div>
+
+    <div class="alert-box secondary">
+      <p id="empty-redirect-info" class="info-text">You have not yet set your redirect site. By default, your blocked sites will redirect to theguardian.com</p>
+      <button id="empty-redirect-change-button" class="secondary-button u-full-width">Change</button>
+    </div>
+  </div>
+  <!-- NOTHING BLOCKED -->
+
+  <!-- REDIRECT SITE -->
+   <div id="redirect-view" style="display: none"> 
+    <div class="input-box">
+      <div class="input-title-box">Redirect site</div>
+      <div class="input-box-content">
+        <input id="redirect-url-input" class="u-full-width" type="text">
+        <button id="redirect-save-button" class="alert-button half-width left">Save</button>
+        <button id="redirect-back-button" class="secondary-button half-width right">Back</button>
+      </div>
+    </div>
+  </div>
+  <!-- REDIRECT SITE -->
+
+  <!-- BLOCK SITE -->
+   <div id="block-site-view" style="display: none"> 
+    <div class="input-box">
+      <div class="input-title-box">Block site</div>
+      <div class="input-box-content">
+        <input class="u-full-width block-site-input" type="text" placeholder="Web address to block, eg. dailymail.co.uk">
+        <button id="block-save-button" class="alert-button half-width left">Block</button>
+        <button id="block-back-button" class="secondary-button half-width right">Back</button>
+      </div>
+    </div>
+  </div>
+  <!-- BLOCK SITE -->
+
+  <!-- BLOCKED SITES -->
+   <div id="blocked-sites-list-view" style="display: none;"> 
+    <div class="input-box">
+      <div class="input-title-box">Your blocked sites</div>
+      <div id="blocked-sites-list-content" class="input-box-content">
+
+      </div>
+    </div>
+    <button id="list-back-button" class="secondary-button half-width left">Back</button>
+    <button id="list-block-more-button" class="alert-button half-width right">Block more</button>
+  </div>
+  <!-- BLOCKED SITES -->
+
   </body>
   <script src="popup.js"></script>
 </html>

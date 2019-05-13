@@ -1,0 +1,102 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+  border: 2px solid #817F82;
+  padding: 20px 20px 0px 20px;
+}
+
+.notice-box {
+  background-color: #D3D5D4;
+  border: 2px solid #817F82;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+.input-box {
+  border: 2px solid #817F82;
+  margin-bottom: 20px;
+}
+
+.input-title-box {
+  background-color: #817F82;
+  padding: 5px;
+}
+
+.input-box-content {
+  margin: 15px;
+}
+
+.alert-box {
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.alert-box.primary {
+  border: 2px solid #EE220C;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.alert-box.secondary {
+  border: 2px solid #D3D5D4;
+}
+
+.info-box {
+  padding: 15px;
+  /*margin-bottom: 10px;*/
+}
+
+button {
+  border-radius: 15px;
+}
+
+input {
+  border-radius: 15px;
+}
+
+.alert-button {
+  background-color: #EE220C;
+  border-style: none;
+  font-style: none;
+  /*font-size: 1em;*/
+}
+
+.secondary-button {
+  background-color: #D3D5D4;
+  border-style: none;
+}
+
+.half-width {
+  width: 47%;
+  display: inline-block;
+}
+
+.half-width.left {
+  margin-right: 2%;
+}
+
+.half-width.right {
+  margin-left: 2%;
+}
+
+.info-text {
+  margin-bottom: 10px;
+}
+
+.blocked-site {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.border-line {
+  height: 0px;
+  width: 100%;
+  border-top: 1px dashed black;
+  margin-top: 1px;
+}

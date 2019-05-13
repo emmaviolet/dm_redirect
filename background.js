@@ -12,7 +12,7 @@ chrome.tabs.onUpdated.addListener(function() {
 
     chrome.storage.local.get(['blockedSites', 'redirectUrl'], function(items) {
       var blockedSites = items['blockedSites'] || ['dailymail.co.uk'];
-      var redirectUrl = items['redirectUrl'] || 'http://theguardian.com'
+      var redirectUrl = items['redirectUrl'] ? 'http://' + items['redirectUrl'] : 'http://theguardian.com';
 
       for (var i = 0; i < blockedSites.length; i++) {
         if (tab.url.includes(blockedSites[i])) {
