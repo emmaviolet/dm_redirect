@@ -121,8 +121,6 @@ function setupBlockedList() {
     document.getElementById('blocked-sites-list-content').innerHTML = html;
 
     document.getElementById('blocked-sites-list-content').addEventListener('click',function(event) {
-      console.log('click event');
-
       if (event.target && event.target.matches('a')) {
         unblockSites(event.target);
       }
@@ -131,7 +129,6 @@ function setupBlockedList() {
 }
 
 function unblockSites(target) {
-  console.log(target);
   var buttonId = target.id;
 
   chrome.storage.local.get(['blockedSites'], function(items) {
