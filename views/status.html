@@ -1,0 +1,41 @@
+<html style="min-width: 350px; overflow: hidden;">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/custom.css">
+  </head>
+  <body id="container" class="container" style="height: 400px; overflow: scroll;">
+  <h5 id="title" style="text-align: center">DM Redirect</h5>
+
+  <!-- STATUS -->
+  <div id="status-view" style="display: none;">
+    <div class="alert-box primary">
+      <p id="blocked-sites-info" class="info-text">You have X blocked sites</p>
+      <a href="views/blocked-list.html" class="button secondary-button half-width left">Show list</a>
+      <a href="views/block-sites.html" class="button alert-button half-width right">Block more</a>
+    </div>
+
+    <div class="alert-box secondary">
+      <p id="status-redirect-info" class="info-text">Your blocked sites redirect to XX</p>
+      <a href="views/redirect-settings.html" class="button secondary-button half-width left">Change</a>
+    </div>
+  </div>
+  <!-- STATUS -->
+
+  <!-- NOTHING BLOCKED -->
+  <div id="empty-view" style="display: none;">
+    <div class="alert-box primary">
+      <p class="info-text">You have no blocked sites</p>
+      <a href="views/block-sites.html" class="button alert-button u-full-width">Block site</a>
+    </div>
+
+    <div class="alert-box secondary">
+      <p id="empty-redirect-info" class="info-text">You have not yet set your redirect site. By default, your blocked sites will redirect to theguardian.com</p>
+      <a href="views/redirect-settings.html" class="button secondary-button u-full-width">Change</a>
+    </div>
+  </div>
+  <!-- NOTHING BLOCKED -->
+
+  </body>
+  <script src="/js/status.js"></script>
+</html>
