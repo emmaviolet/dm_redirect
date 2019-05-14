@@ -1,0 +1,25 @@
+{
+  "name": "dm_redirect",
+  "version": "1.0.0",
+  "description": "Source code for Chrome browser extension [DM Redirect](https://chrome.google.com/webstore/detail/pfbdhjecpnbopodopafogoggcbpojdci)",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jslint": "^0.12.1",
+    "sinon-chrome": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmaviolet/dm_redirect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmaviolet/dm_redirect/issues"
+  },
+  "homepage": "https://github.com/emmaviolet/dm_redirect#readme"
+}
