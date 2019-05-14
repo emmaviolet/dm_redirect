@@ -52,12 +52,9 @@ input {
   /*margin-bottom: 10px;*/
 }
 
-button {
-  border-radius: 15px;
-}
-
 .button {
   border-radius: 15px;
+  padding-top: 6px;
 }
 
 input {
