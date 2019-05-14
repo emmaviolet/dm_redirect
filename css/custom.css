@@ -5,6 +5,12 @@ body {
 .container {
   border: 2px solid #817F82;
   padding: 20px 20px 0px 20px;
+  height: 400px;
+  overflow: scroll;
+}
+
+h5 {
+  text-align: center;
 }
 
 .notice-box {
