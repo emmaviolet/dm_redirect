@@ -1,18 +1,18 @@
 {
-  "manifest_version": 2,
-  "name": "DM Redirect",
-  "description": "Blocks selected sites by redirecting to another site of your choice.",
-  "version": "0.9",
-  "permissions": [
-    "storage",
-    "tabs"
-  ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": true
-  },
-  "browser_action": {
-    "default_popup" : "views/status.html",
-    "default_icon": "redirect_icon.png"
-  }
+    "manifest_version": 2,
+    "name": "DM Redirect",
+    "description": "Blocks selected sites by redirecting to another site of your choice.",
+    "version": "0.9",
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_popup" : "views/status.html",
+        "default_icon": "redirect_icon.png"
+    }
 }
