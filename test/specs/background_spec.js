@@ -2,12 +2,14 @@
 
 const chrome = require('sinon-chrome');
 
-describe('background.js', function () {
+
+
+describe('background', function () {
     'use strict';
 
     before(function () {
         global.chrome = chrome;
-        // this.events = new EventsModule();
+        require('../../js/background.js');
     });
 
     beforeEach(function () {
