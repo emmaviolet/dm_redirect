@@ -13,7 +13,7 @@ function unblockSites(target) {
         });
 
         chrome.storage.local.set({blockedSites: updatedBlockedSites}, function () {
-            window.location.href = '/views/status.html';
+            window.location.href = '/app/views/status.html';
         });
     });
 }

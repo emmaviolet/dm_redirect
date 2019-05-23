@@ -13,7 +13,7 @@ function blockSites() {
 
         chrome.storage.local.set({blockedSites: blockedSites}, function () {
             input.value = '';
-            window.location.href = '/views/status.html';
+            window.location.href = '/app/views/status.html';
         });
     });
 }

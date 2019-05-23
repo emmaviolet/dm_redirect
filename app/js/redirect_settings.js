@@ -19,7 +19,7 @@ function changeRedirect() {
 
     chrome.storage.local.set({redirectUrl: redirectUrlBase}, function () {
         populateRedirectInput();
-        window.location.href = '/views/status.html';
+        window.location.href = '/app/views/status.html';
     });
 }
 
