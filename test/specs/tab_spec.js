@@ -1,7 +1,7 @@
 /*global describe, beforeEach, before, it, after, assert */
 
 const chrome = require('sinon-chrome');
-const Tab = require('../../js/tab.js');
+const Tab = require('../../app/js/tab.js');
 
 describe('background', function () {
     'use strict';

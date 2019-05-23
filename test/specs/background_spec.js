@@ -1,7 +1,7 @@
 /*global describe, beforeEach, before, it, after, assert */
 
 const chrome = require('sinon-chrome');
-const Tab = require('../../js/tab.js');
+const Tab = require('../../app/js/tab.js');
 var sinon = require('sinon');
 
 describe('background', function () {
@@ -12,7 +12,7 @@ describe('background', function () {
         global.chrome = chrome;
         tabSpy = sinon.stub(Tab.prototype, 'redirectIfBlocked').returns({});
         chrome.tabs.query.yields([1, 2]);
-        require('../../js/background.js');
+        require('../../app/js/background.js');
     });
 
     beforeEach(function () {
