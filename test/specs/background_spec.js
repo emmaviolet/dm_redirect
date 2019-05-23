@@ -24,11 +24,8 @@ describe('background', function () {
     });
 
     describe('when a tab is updated', function () {
-        beforeEach(function () {
-            chrome.tabs.onUpdated.dispatch({url: 'my-url'});
-        });
-
         it('should call redirectIfBlocked on the created tab', function () {
+            chrome.tabs.onUpdated.dispatch({url: 'my-url'});
             assert.ok(chrome.tabs.query.withArgs({active: true, lastFocusedWindow: true}).calledOnce);
             assert.ok(tabSpy.calledOnce);
         });
