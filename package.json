@@ -8,7 +8,8 @@
     "chai": "^4.2.0",
     "jslint": "^0.12.1",
     "mocha": "^6.1.4",
-    "sinon-chrome": "^3.0.1"
+    "sinon-chrome": "^3.0.1",
+    "sinon": "^7.1.0"
   },
   "scripts": {
     "test": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\""
