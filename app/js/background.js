@@ -1,6 +1,6 @@
 /*global chrome */
 
-var Tab = require('./tab.js');
+const Tab = require('./tab.js');
 
 chrome.tabs.onUpdated.addListener(function () {
     'use strict';

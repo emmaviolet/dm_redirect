@@ -5,6 +5,7 @@ function Tab(attributes) {
 
     this.id = attributes.id;
     this.url = attributes.url;
+    // when we have logging - log an error if these do not exist or are unexpected form
 }
 
 Tab.prototype.redirectIfBlocked = function () {

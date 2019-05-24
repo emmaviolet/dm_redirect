@@ -3,7 +3,7 @@
 const chrome = require('sinon-chrome');
 const Tab = require('../../app/js/tab.js');
 
-describe('background', function () {
+describe('tab', function () {
     'use strict';
 
     before(function () {

@@ -1,20 +1,14 @@
 /*global chrome, window */
 
-function unblockSites(target) {
+const Website = require('./website.js');
+
+function unblockSite(targetId) {
     'use strict';
 
-    var buttonId = target.id;
-
-    chrome.storage.local.get(['blockedSites'], function (items) {
-        var blockedSites = items.blockedSites;
-        var siteToUnblock = buttonId.replace('unblock-button-', '');
-        var updatedBlockedSites = blockedSites.filter(function (value) {
-            return value !== siteToUnblock;
-        });
-
-        chrome.storage.local.set({blockedSites: updatedBlockedSites}, function () {
-            window.location.href = '/app/views/status.html';
-        });
+    var url = targetId.replace('unblock-button-', '');
+    var website = new Website(url);
+    website.unblock(function () {
+        window.location.href = '/app/views/status.html';
     });
 }
 
@@ -43,7 +37,7 @@ chrome.storage.local.get(['blockedSites'], function (items) {
     var html;
 
     if (!Array.isArray(blockedSites) || !blockedSites.length) {
-        // This shouldn't happen so we probably want to raise an error
+        // This shouldn't happen so in the future we probably want to log an issue
         html = 'You have no blocked sites';
     } else {
         html = constructHTMLforBlockedSites(blockedSites);
@@ -53,7 +47,7 @@ chrome.storage.local.get(['blockedSites'], function (items) {
 
     document.getElementById('blocked-sites-list-content').addEventListener('click', function (event) {
         if (event.target && event.target.matches('a')) {
-            unblockSites(event.target);
+            unblockSite(event.target.id);
         }
     });
 });

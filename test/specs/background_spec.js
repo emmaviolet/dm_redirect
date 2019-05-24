@@ -1,8 +1,8 @@
 /*global describe, beforeEach, before, it, after, assert */
 
 const chrome = require('sinon-chrome');
+const sinon = require('sinon');
 const Tab = require('../../app/js/tab.js');
-var sinon = require('sinon');
 
 describe('background', function () {
     'use strict';
@@ -19,7 +19,7 @@ describe('background', function () {
         chrome.runtime.sendMessage.flush();
     });
 
-    it('should subscribe to chrome.tabs.onUpdated', function () {
+    it('subscribes to chrome.tabs.onUpdated', function () {
         assert.ok(chrome.tabs.onUpdated.addListener.calledOnce);
     });
 
