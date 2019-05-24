@@ -8,11 +8,13 @@
     "chai": "^4.2.0",
     "jslint": "^0.12.1",
     "mocha": "^6.1.4",
-    "sinon-chrome": "^3.0.1",
-    "sinon": "^7.1.0"
+    "sinon": "^7.1.0",
+    "sinon-chrome": "^3.0.1"
   },
   "scripts": {
-    "test": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\""
+    "build": "browserify ./app/js/background.js > ./app/js/browserify/background.js && browserify ./app/js/block_sites.js > ./app/js/browserify/block_sites.js && browserify ./app/js/blocked_list.js > ./app/js/browserify/blocked_list.js",
+    "test": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\"",
+    "lint": "jslint --edition=latest \"app/js/**.js\""
   },
   "repository": {
     "type": "git",

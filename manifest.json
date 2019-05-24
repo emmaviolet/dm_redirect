@@ -8,7 +8,7 @@
         "tabs"
     ],
     "background": {
-        "scripts": ["app/js/background.js"],
+        "scripts": ["app/js/browserify/background.js"],
         "persistent": true
     },
     "browser_action": {
