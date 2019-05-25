@@ -8,6 +8,9 @@ class Website {
         this.url = wwwStrippedUrl;
     }
 
+    /*
+     * Adds url to user's blocked list
+     */
     block(callback) {
         chrome.storage.local.get('blockedSites', (items) => {
             var blockedSites = items.blockedSites || [];
@@ -24,6 +27,9 @@ class Website {
         });
     }
 
+    /*
+     * Removes url from user's blocked list
+     */
     unblock(callback) {
         chrome.storage.local.get(['blockedSites'], (items) => {
             var blockedSites = items.blockedSites;

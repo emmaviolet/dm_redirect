@@ -1,9 +1,7 @@
 /*global chrome, window */
 
-/**
- * Saves an additional site to the user's list of blocked sites
- * Listens for click action on the save button
- * Pulls the contents of the input field and adds the url from the input field to the user's list of blocked sites
+/*
+ * Populates the input field with the user's current chosen redirect url
  */
 var populateRedirectInput = () => {
     'use strict';
@@ -16,6 +14,9 @@ var populateRedirectInput = () => {
     });
 };
 
+/*
+ * Changes the user's redirect url to the url in the input field
+ */
 var changeRedirect = () => {
     'use strict';
 
@@ -30,6 +31,9 @@ var changeRedirect = () => {
 
 populateRedirectInput();
 
+/*
+ * Adds a click listener to the save button to change the user's chosen redirect url
+ */
 document.getElementById('redirect-save-button').addEventListener('click', (event) => {
     'use strict';
 
