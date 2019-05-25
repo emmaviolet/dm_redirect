@@ -13,19 +13,20 @@ var listForItems = (items) => {
         return 'You have no blocked sites';
     }
 
-    var htmlString = '';
+    var htmlElements = [];
 
     items.forEach((item, index) => {
-        htmlString += '<div class="blocked-site row">' + item + '<a href="#" id="unblock-button-';
-        htmlString += item;
-        htmlString += '" class="unblock-link" style="float: right;">Unblock</a></div>';
+        htmlElements.push(
+            `<div class="blocked-site row">${item}<a href="#" id="unblock-button-${item}" `,
+            `class="unblock-link" style="float: right;">Unblock</a></div>`
+        )
 
         if (index !== items.length - 1) {
-            htmlString += '<div class="border-line"></div>';
+            htmlElements.push('<div class="border-line"></div>');
         }
     });
 
-    return htmlString;
+    return htmlElements.join('');
 };
 
 /**

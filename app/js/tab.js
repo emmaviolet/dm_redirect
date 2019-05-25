@@ -10,7 +10,7 @@ class Tab {
     redirectIfBlocked() {
         chrome.storage.local.get(['blockedSites', 'redirectUrl'], (items) => {
             var blockedSites = items.blockedSites || ['dailymail.co.uk'];
-            var redirectUrl = items.redirectUrl ? 'http://' + items.redirectUrl : 'http://theguardian.com';
+            var redirectUrl = items.redirectUrl ? `http://${items.redirectUrl}` : 'http://theguardian.com';
 
             blockedSites.forEach((item) => {
                 if (this.url.includes(item)) {
