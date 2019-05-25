@@ -4,32 +4,32 @@ const chrome = require('sinon-chrome');
 const sinon = require('sinon');
 const Website = require('../../app/js/website.js');
 
-describe('website', function () {
+describe('website', () => {
     'use strict';
 
-    before(function () {
+    before(() => {
         global.chrome = chrome;
     });
 
-    beforeEach(function () {
+    beforeEach(() => {
         chrome.runtime.sendMessage.flush();
     });
 
-    describe('constructor', function () {
-        it('creates a new website item', function () {
+    describe('constructor', () => {
+        it('creates a new website item', () => {
             var website = new Website('https://google.com');
             assert(website);
         });
     });
 
-    describe('block', function () {
-        beforeEach(function () {
+    describe('block', () => {
+        beforeEach(() => {
             chrome.storage.local.get.yields({blockedSites: ['facebook.com', 'website.co.uk']});
             chrome.storage.local.set.yields();
         });
 
-        describe('if the website is not already blocked', function () {
-            it('adds the stripped website url to the list of blocked urls', function () {
+        describe('if the website is not already blocked', () => {
+            it('adds the stripped website url to the list of blocked urls', () => {
                 var website = new Website('https://www.google.com');
                 var expectedBlockedSites = ['facebook.com', 'website.co.uk', 'google.com'];
 
@@ -38,8 +38,8 @@ describe('website', function () {
             });
         });
 
-        describe('if the website is already blocked', function () {
-            it('does not add to the list of blocked urls', function () {
+        describe('if the website is already blocked', () => {
+            it('does not add to the list of blocked urls', () => {
                 var website = new Website('https://www.facebook.com');
                 var expectedBlockedSites = ['facebook.com', 'website.co.uk'];
 
@@ -48,7 +48,7 @@ describe('website', function () {
             });
         });
 
-        it('runs callback on completion', function () {
+        it('runs callback on completion', () => {
             var spy = sinon.spy();
             var website = new Website('https://www.newwebsite.com');
 
@@ -57,14 +57,14 @@ describe('website', function () {
         });
     });
 
-    describe('unblock', function () {
-        beforeEach(function () {
+    describe('unblock', () => {
+        beforeEach(() => {
             chrome.storage.local.get.yields({blockedSites: ['facebook.com', 'website.co.uk']});
             chrome.storage.local.set.yields();
         });
 
-        describe('if the website is in the blocked list', function () {
-            it('removes the website url from the list of blocked urls', function () {
+        describe('if the website is in the blocked list', () => {
+            it('removes the website url from the list of blocked urls', () => {
                 var website = new Website('facebook.com');
                 var expectedBlockedSites = ['website.co.uk'];
 
@@ -73,8 +73,8 @@ describe('website', function () {
             });
         });
 
-        describe('if the website is not in the blocked list', function () {
-            it('does not change the list of blocked urls', function () {
+        describe('if the website is not in the blocked list', () => {
+            it('does not change the list of blocked urls', () => {
                 var website = new Website('pinterest.com');
                 var expectedBlockedSites = ['facebook.com', 'website.co.uk'];
 
@@ -85,7 +85,7 @@ describe('website', function () {
             });
         });
 
-        it('runs callback on completion', function () {
+        it('runs callback on completion', () => {
             var spy = sinon.spy();
             var website = new Website('https://www.newwebsite.com');
 
@@ -94,7 +94,7 @@ describe('website', function () {
         });
     });
 
-    after(function () {
+    after(() => {
         chrome.flush();
         delete global.chrome;
     });

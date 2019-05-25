@@ -1,6 +1,6 @@
 /*global chrome */
 
-function configureViewForItems(items) {
+var configureViewForItems = (items) => {
     'use strict';
 
     var blockedSites = items.blockedSites;
@@ -8,21 +8,17 @@ function configureViewForItems(items) {
 
     var defaultRedirectText = 'You have not yet set your redirect site. By default, your blocked sites will redirect to theguardian.com';
 
-    var redirectInfoText = redirectUrl
-        ? 'Your blocked sites redirect to ' + redirectUrl
-        : defaultRedirectText;
+    var redirectInfoText = redirectUrl ? 'Your blocked sites redirect to ' + redirectUrl : defaultRedirectText;
 
     document.getElementById('empty-redirect-info').innerHTML = redirectInfoText;
     document.getElementById('status-redirect-info').innerHTML = redirectInfoText;
 
-    var blockedInfoText = blockedSites.length === 1
-        ? 'You have 1 blocked site'
-        : 'You have ' + blockedSites.length + ' blocked sites';
+    var blockedInfoText = blockedSites.length === 1 ? 'You have 1 blocked site' : 'You have ' + blockedSites.length + ' blocked sites';
 
     document.getElementById('blocked-sites-info').innerHTML = blockedInfoText;
-}
+};
 
-chrome.storage.local.get(['blockedSites', 'redirectUrl'], function (items) {
+chrome.storage.local.get(['blockedSites', 'redirectUrl'], (items) => {
     'use strict';
 
     var blockedSites = items.blockedSites;
