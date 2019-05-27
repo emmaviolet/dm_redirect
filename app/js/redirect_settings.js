@@ -1,11 +1,10 @@
-/*global chrome, window */
+/*global chrome */
+'use strict';
 
 /*
  * Populates the input field with the user's current chosen redirect url
  */
 var populateRedirectInput = () => {
-    'use strict';
-
     chrome.storage.local.get('redirectUrl', (items) => {
         var redirectUrl = items.redirectUrl || 'theguardian.com';
 
@@ -18,8 +17,6 @@ var populateRedirectInput = () => {
  * Changes the user's redirect url to the url in the input field
  */
 var changeRedirect = () => {
-    'use strict';
-
     var redirectUrl = document.getElementById('redirect-url-input').value;
     var redirectUrlBase = redirectUrl.split('://').slice(-1)[0];
 
@@ -35,8 +32,6 @@ populateRedirectInput();
  * Adds a click listener to the save button to change the user's chosen redirect url
  */
 document.getElementById('redirect-save-button').addEventListener('click', (event) => {
-    'use strict';
-
     event.stopImmediatePropagation();
     changeRedirect();
 }, true);

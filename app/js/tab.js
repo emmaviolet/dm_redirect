@@ -1,4 +1,5 @@
 /*global chrome */
+'use strict';
 
 class Tab {
     constructor(attributes) {

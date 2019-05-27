@@ -1,4 +1,4 @@
-/*global chrome, window */
+'use strict';
 
 const Website = require('./website.js');
 
@@ -8,7 +8,6 @@ const Website = require('./website.js');
  * Pulls the contents of the input field and adds the url from the input field to the user's list of blocked sites
  */
 document.getElementById('block-save-button').addEventListener('click', (event) => {
-    'use strict';
     event.stopImmediatePropagation();
 
     var url = document.getElementById('block-site-input').value;

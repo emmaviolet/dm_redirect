@@ -1,4 +1,5 @@
-/*global chrome, window */
+/*global chrome */
+'use strict';
 
 const Website = require('./website.js');
 
@@ -6,8 +7,6 @@ const Website = require('./website.js');
  * Iterates through the given items and forms a list with the url name and an 'unblock' button for each one
  */
 var listForItems = (items) => {
-    'use strict';
-
     if (!Array.isArray(items) || !items.length) {
         // This shouldn't happen so in the future we probably want to log an issue
         return 'You have no blocked sites';
@@ -34,8 +33,6 @@ var listForItems = (items) => {
  * to unblock the corresponding site if the button is clicked.
  */
 chrome.storage.local.get(['blockedSites'], (items) => {
-    'use strict';
-
     document.getElementById('blocked-sites-list-content').innerHTML = listForItems(items.blockedSites);
 
     document.getElementById('blocked-sites-list-content').addEventListener('click', (event) => {

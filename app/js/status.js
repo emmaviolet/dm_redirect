@@ -1,11 +1,10 @@
 /*global chrome */
+'use strict';
 
 /*
  * Configures text to reflect the user's blocked items and redirect url
  */
 var configureViewForItems = (items) => {
-    'use strict';
-
     var blockedSites = items.blockedSites;
     var redirectUrl = items.redirectUrl;
 
@@ -25,8 +24,6 @@ var configureViewForItems = (items) => {
  * Chooses which status view to display depending on whether the user has already selected blocked sites
  */
 chrome.storage.local.get(['blockedSites', 'redirectUrl'], (items) => {
-    'use strict';
-
     var blockedSites = items.blockedSites;
 
     if (!Array.isArray(blockedSites) || !blockedSites.length) {

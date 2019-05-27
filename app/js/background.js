@@ -1,4 +1,5 @@
 /*global chrome */
+'use strict';
 
 /**
  * Background file - listens for url changes to tabs
@@ -7,8 +8,6 @@
 const Tab = require('./tab.js');
 
 chrome.tabs.onUpdated.addListener(() => {
-    'use strict';
-
     chrome.tabs.query({active: true, lastFocusedWindow: true}, (tabs) => {
         var tab = new Tab(tabs[0]);
         tab.redirectIfBlocked();
