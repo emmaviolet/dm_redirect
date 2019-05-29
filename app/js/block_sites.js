@@ -1,6 +1,6 @@
 'use strict';
 
-const Website = require('./website.js');
+const SiteBlocker = require('./site_blocker.js');
 
 /**
  * Saves an additional site to the user's list of blocked sites
@@ -10,12 +10,26 @@ const Website = require('./website.js');
 document.getElementById('block-save-button').addEventListener('click', (event) => {
     event.stopImmediatePropagation();
 
-    var url = document.getElementById('block-site-input').value;
-    if (url !== '') {
-        var website = new Website(url);
-        website.block(() => {
-            url = '';
-            window.location.href = '/app/views/status.html';
-        });
-    }
+    var inputs = Array.from(document.getElementsByClassName('block-site-input'));
+    var urls = inputs.map((item) => {
+        return item.value;
+    }).filter((item) => {
+        return item !== null && item !== '';
+    });
+
+    SiteBlocker.block(urls, () => {
+        window.location.href = '/app/views/status.html';
+    });
+}, true);
+
+document.getElementById('add-another-button').addEventListener('click', (event) => {
+    event.stopImmediatePropagation();
+
+    var inputBox = document.getElementById('url-inputs');
+    var input = document.createElement("input");
+    input.className = "block-site-input u-full-width";
+    input.type = "text";
+    input.placeholder = "Web address to block, eg. dailymail.co.uk";
+
+    inputBox.appendChild(input);
 }, true);

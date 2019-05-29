@@ -1,11 +1,10 @@
 /*global describe, beforeEach, before, it, after, assert */
+'use strict';
 
 const chrome = require('sinon-chrome');
 const Tab = require('../../app/js/tab.js');
 
-describe('tab', () => {
-    'use strict';
-
+describe('Tab', () => {
     before(() => {
         global.chrome = chrome;
     });
