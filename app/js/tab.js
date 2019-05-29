@@ -23,6 +23,13 @@ class Tab {
             });
         });
     }
+
+    static current(callback) {
+        chrome.tabs.query({active: true, lastFocusedWindow: true}, (tabs) => {
+            var tab = new Tab(tabs[0]);
+            callback(tab);
+        });
+    }
 }
 
 module.exports = Tab;

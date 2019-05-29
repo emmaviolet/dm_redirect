@@ -9,7 +9,12 @@
 
         <!-- STATUS -->
         <div id="status-view" style="display: none;">
-            <div class="alert-box primary">
+            <div class="notice-box">
+                <p id="current-site-text" class="info-text">You are currently visiting google.com</p>
+                <a href="#" id="block-current-site-button" class="button alert-button u-full-width">Block this site</a>
+            </div>
+
+            <div class="alert-box secondary">
                 <p id="blocked-sites-info" class="info-text">You have X blocked sites</p>
                 <a href="blocked_list.html" class="button secondary-button half-width left">Show list</a>
                 <a href="block_sites.html" class="button alert-button half-width right">Block more</a>
@@ -30,12 +35,12 @@
             </div>
 
             <div class="alert-box secondary">
-                <p id="empty-redirect-info" class="info-text">You have not yet set your redirect site. By default, your blocked sites will redirect to theguardian.com</p>
+                <p class="info-text">You have not yet set your redirect site. By default, your blocked sites will redirect to theguardian.com</p>
                 <a href="redirect_settings.html" class="button secondary-button u-full-width">Change</a>
             </div>
 
             <div class="alert-box secondary">
-                <p id="empty-redirect-info" class="info-text">DM Redirect tracks absolutely nothing except to identify when you type the name of a blocked site in your url bar.</p>
+                <p class="info-text">DM Redirect tracks absolutely nothing except to identify when you type the name of a blocked site in your url bar.</p>
             </div>
         </div>
         <!-- NOTHING BLOCKED -->

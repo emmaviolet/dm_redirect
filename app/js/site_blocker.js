@@ -2,22 +2,16 @@
 'use strict';
 
 class SiteBlocker {
-
-    // any way to make this private?
-    static _strippedUrls(urls) {
-        return urls.map((item) => {
-            var httpStrippedUrl = item.replace(/^(http\:\/\/)|(https\:\/\/)/, "");
-            var wwwStrippedUrl = httpStrippedUrl.replace(/^(www\.)/, "");
-            return wwwStrippedUrl;
-        });
-    }
-
     /*
      * Adds urls to user's blocked list
      */
     static block(urls, callback) {
         // check urls is array
-        var sitesToBlock = this._strippedUrls(urls);
+        var sitesToBlock = urls.map((item) => {
+            var httpStrippedUrl = item.replace(/^(http\:\/\/)|(https\:\/\/)/, "");
+            var wwwStrippedUrl = httpStrippedUrl.replace(/^(www\.)/, "");
+            return wwwStrippedUrl;
+        });
 
         chrome.storage.local.get('blockedSites', (items) => {
             var blockedSites = items.blockedSites || [];
@@ -40,7 +34,7 @@ class SiteBlocker {
      * Removes urls from user's blocked list
      */
     static unblock(urls, callback) {
-        var sitesToUnblock = this._strippedUrls(urls);
+        var sitesToUnblock = urls;
 
         chrome.storage.local.get(['blockedSites'], (items) => {
             var blockedSites = items.blockedSites;

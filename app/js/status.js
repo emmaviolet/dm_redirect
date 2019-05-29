@@ -1,6 +1,22 @@
 /*global chrome */
 'use strict';
 
+const SiteBlocker = require('./site_blocker.js');
+const Tab = require('./tab.js');
+
+/*
+ * Adds the current site host to the user's blocked urls
+ */
+var blockCurrentSite = () => {
+    Tab.current((tab) => {
+        var hostname = new URL(tab.url).hostname;
+        SiteBlocker.block([hostname], () => {
+            tab.redirectIfBlocked();
+            location.reload();
+        });
+    });
+};
+
 /*
  * Configures text to reflect the user's blocked items and redirect url
  */
@@ -10,14 +26,16 @@ var configureViewForItems = (items) => {
 
     var defaultRedirectText = 'You have not yet set your redirect site. By default, your blocked sites will redirect to theguardian.com';
     var redirectInfoText = redirectUrl ? `Your blocked sites redirect to ${redirectUrl}` : defaultRedirectText;
-
-    // do we still need both of these?
-    document.getElementById('empty-redirect-info').innerHTML = redirectInfoText;
     document.getElementById('status-redirect-info').innerHTML = redirectInfoText;
 
     var blockedInfoText = blockedSites.length === 1 ? 'You have 1 blocked site' : `You have ${blockedSites.length} blocked sites`;
-
     document.getElementById('blocked-sites-info').innerHTML = blockedInfoText;
+
+    Tab.current((tab) => {
+        var hostname = new URL(tab.url).hostname;
+        var currentSiteInfoText = `You are currently visiting ${hostname}`;
+        document.getElementById('current-site-text').innerHTML = currentSiteInfoText;
+    });
 };
 
 /*
@@ -35,3 +53,8 @@ chrome.storage.local.get(['blockedSites', 'redirectUrl'], (items) => {
         document.getElementById('status-view').style.display = 'block';
     }
 });
+
+document.getElementById('block-current-site-button').addEventListener('click', (event) => {
+    event.stopImmediatePropagation();
+    blockCurrentSite();
+}, true);

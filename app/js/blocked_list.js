@@ -1,7 +1,7 @@
 /*global chrome */
 'use strict';
 
-const Website = require('./website.js');
+const SiteBlocker = require('./site_blocker.js');
 
 /**
  * Iterates through the given items and forms a list with the url name and an 'unblock' button for each one
@@ -40,10 +40,8 @@ var populateView = () => {
             if (event.target && event.target.matches('a')) {
 
                 var url = event.target.id.replace('unblock-button-', '');
-                var website = new Website(url);
-                website.unblock(() => {
+                SiteBlocker.unblock([url], () => {
                     populateView();
-                    //window.location.href = '/app/views/status.html';
                 });
 
             }

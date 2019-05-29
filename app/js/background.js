@@ -8,8 +8,7 @@
 const Tab = require('./tab.js');
 
 chrome.tabs.onUpdated.addListener(() => {
-    chrome.tabs.query({active: true, lastFocusedWindow: true}, (tabs) => {
-        var tab = new Tab(tabs[0]);
+    Tab.current((tab) => {
         tab.redirectIfBlocked();
     });
 });
