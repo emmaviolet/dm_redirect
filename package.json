@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
-    "jshint": "^2.10.2",
+    "eslint": "^5.16.0",
     "mocha": "^6.1.4",
     "sinon": "^7.1.0",
     "sinon-chrome": "^3.0.1"
@@ -14,7 +14,7 @@
   "scripts": {
     "start": "browserify-directory app/js lib",
     "test": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\"",
-    "lint": "jshint app/js/**.js test/specs/**.js"
+    "lint": "eslint app/js/**.js test/specs/**.js"
   },
   "repository": {
     "type": "git",
