@@ -2,6 +2,7 @@
 'use strict';
 
 const chrome = require('sinon-chrome');
+const sinon = require('sinon');
 const Tab = require('../../app/js/tab.js');
 
 describe('Tab', () => {
@@ -13,14 +14,27 @@ describe('Tab', () => {
         chrome.runtime.sendMessage.flush();
     });
 
-    describe('constructor', () => {
-        it('creates a new tab item', () => {
+    describe('.constructor', () => {
+        it('sets the tab id from the provided attributes', () => {
             var tab = new Tab({id: 389, url: 'https://google.com'});
-            assert(tab);
+
+            assert.match(tab.id, 389);
+        });
+
+        it('sets the tab url from the provided attributes', () => {
+            var tab = new Tab({id: 389, url: 'https://google.com'});
+
+            assert.match(tab.url, 'https://google.com');
+        });
+
+        it('does not set additional attributes', () => {
+            var tab = new Tab({id: 389, url: 'https://google.com', index: 3});
+
+            assert.match(tab.index, undefined);
         });
     });
 
-    describe('redirectIfBlocked', () => {
+    describe('#redirectIfBlocked', () => {
 
         describe('if neither blocked sites nor redirect url has been set', () => {
             beforeEach(() => {
@@ -108,6 +122,21 @@ describe('Tab', () => {
                     assert.ok(chrome.tabs.update.withArgs(185, {url: 'http://ft.com'}).notCalled);
                 });
             });
+        });
+    });
+
+    describe('.current', () => {
+        beforeEach(() => {
+            chrome.tabs.query.yields([{id: 234, url: 'https://pinterest.com'}, {id: 456, url: 'https://google.com'}]);
+        });
+
+        it('runs the callback with the current tab', () => {
+            var tab = new Tab({id: 234, url: 'https://pinterest.com'});
+            var spy = sinon.spy();
+
+            Tab.current(spy);
+
+            assert.ok(spy.withArgs(tab).called);
         });
     });
 
