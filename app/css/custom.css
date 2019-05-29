@@ -1,3 +1,8 @@
+html {
+  min-width: 350px;
+  overflow: hidden;
+}
+
 body {
   font-family: 'Ubuntu', sans-serif;
 }
@@ -5,7 +10,7 @@ body {
 .container {
   border: 2px solid #817F82;
   padding: 20px 20px 0px 20px;
-  height: 400px;
+  height: 500px;
   overflow: scroll;
 }
 
@@ -21,12 +26,18 @@ h5 {
 }
 
 input {
+  margin-top: 5px;
   margin-bottom: 20px;
 }
 
 .input-box {
   border: 2px solid #817F82;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+#url-inputs {
+  max-height: 240px; /*height of 5 inputs*/
+  overflow: scroll;
 }
 
 .input-title-box {
@@ -35,18 +46,16 @@ input {
 }
 
 .input-box-content {
-  margin: 15px;
+  margin: 10px 15px 15px 15px;
 }
 
 .alert-box {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .alert-box.primary {
   border: 2px solid #EE220C;
-  padding: 15px;
-  margin-bottom: 20px;
 }
 
 .alert-box.secondary {
@@ -55,16 +64,18 @@ input {
 
 .info-box {
   padding: 15px;
-  /*margin-bottom: 10px;*/
 }
 
 .button {
   border-radius: 15px;
   padding-top: 6px;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 input {
   border-radius: 15px;
+  margin-bottom: 5px;
 }
 
 .alert-button {
@@ -92,7 +103,7 @@ input {
 }
 
 .info-text {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .blocked-site {

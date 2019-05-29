@@ -32,4 +32,5 @@ document.getElementById('add-another-button').addEventListener('click', (event) 
     input.placeholder = "Web address to block, eg. dailymail.co.uk";
 
     inputBox.appendChild(input);
+    inputBox.scrollTop = inputBox.scrollHeight;
 }, true);
