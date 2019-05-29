@@ -4,7 +4,7 @@
 class SiteBlocker {
 
     // any way to make this private?
-    static strippedUrls(urls) {
+    static _strippedUrls(urls) {
         return urls.map((item) => {
             var httpStrippedUrl = item.replace(/^(http\:\/\/)|(https\:\/\/)/, "");
             var wwwStrippedUrl = httpStrippedUrl.replace(/^(www\.)/, "");
@@ -17,7 +17,7 @@ class SiteBlocker {
      */
     static block(urls, callback) {
         // check urls is array
-        var sitesToBlock = this.strippedUrls(urls);
+        var sitesToBlock = this._strippedUrls(urls);
 
         chrome.storage.local.get('blockedSites', (items) => {
             var blockedSites = items.blockedSites || [];
@@ -40,7 +40,7 @@ class SiteBlocker {
      * Removes urls from user's blocked list
      */
     static unblock(urls, callback) {
-        var sitesToUnblock = this.strippedUrls(urls);
+        var sitesToUnblock = this._strippedUrls(urls);
 
         chrome.storage.local.get(['blockedSites'], (items) => {
             var blockedSites = items.blockedSites;
