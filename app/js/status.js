@@ -7,14 +7,36 @@ const Tab = require('./tab.js');
 /*
  * Adds the current site host to the user's blocked urls
  */
-var blockCurrentSite = () => {
-    Tab.current((tab) => {
+var blockCurrentSite = async () => {
+    try {
+        var tab = await Tab.current();
+
         var hostname = new URL(tab.url).hostname;
         SiteBlocker.block([hostname], () => {
             tab.redirectIfBlocked();
             location.reload();
         });
-    });
+    } catch (error) {
+        // Log the error when we have error logging
+        // Show a nice error view
+    }
+};
+
+/*
+ * Populates notice box with details of current site
+ */
+var configureCurrentSiteNotice = async () => {
+    try {
+        var tab = await Tab.current();
+
+        var hostname = new URL(tab.url).hostname;
+        var currentSiteInfoText = `You are currently visiting ${hostname}`;
+        document.getElementById('current-site-text').innerHTML = currentSiteInfoText;
+        document.getElementById('current-site-notice').display = 'block';
+    } catch (error) {
+        // And log the error when we have error logging
+        document.getElementById('current-site-notice').display = 'none';
+    }
 };
 
 /*
@@ -31,11 +53,7 @@ var configureViewForItems = (items) => {
     var blockedInfoText = blockedSites.length === 1 ? 'You have 1 blocked site' : `You have ${blockedSites.length} blocked sites`;
     document.getElementById('blocked-sites-info').innerHTML = blockedInfoText;
 
-    Tab.current((tab) => {
-        var hostname = new URL(tab.url).hostname;
-        var currentSiteInfoText = `You are currently visiting ${hostname}`;
-        document.getElementById('current-site-text').innerHTML = currentSiteInfoText;
-    });
+    configureCurrentSiteNotice();
 };
 
 /*

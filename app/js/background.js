@@ -7,8 +7,11 @@
  */
 const Tab = require('./tab.js');
 
-chrome.tabs.onUpdated.addListener(() => {
-    Tab.current((tab) => {
+chrome.tabs.onUpdated.addListener(async () => {
+    try {
+        var tab = await Tab.current();
         tab.redirectIfBlocked();
-    });
+    } catch (error) {
+        // Log error when we have error logging, for now do nothing
+    }
 });

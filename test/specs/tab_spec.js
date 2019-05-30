@@ -2,7 +2,6 @@
 'use strict';
 
 const chrome = require('sinon-chrome');
-const sinon = require('sinon');
 const Tab = require('../../app/js/tab.js');
 
 describe('Tab', () => {
@@ -130,13 +129,9 @@ describe('Tab', () => {
             chrome.tabs.query.yields([{id: 234, url: 'https://pinterest.com'}, {id: 456, url: 'https://google.com'}]);
         });
 
-        it('runs the callback with the current tab', () => {
-            var tab = new Tab({id: 234, url: 'https://pinterest.com'});
-            var spy = sinon.spy();
-
-            Tab.current(spy);
-
-            assert.ok(spy.withArgs(tab).called);
+        it('returns the current tab', async () => {
+            var tab = await Tab.current()
+            assert.match(tab.id, 234)
         });
     });
 

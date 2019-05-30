@@ -6,12 +6,12 @@ const sinon = require('sinon');
 const Tab = require('../../app/js/tab.js');
 
 describe('background', () => {
-    var tabSpy;
+    var tabRedirectSpy;
+    var tab = new Tab({id: 123, url: 'google.com'});
 
     before(() => {
         global.chrome = chrome;
-        tabSpy = sinon.stub(Tab.prototype, 'redirectIfBlocked').returns({});
-        chrome.tabs.query.yields([1, 2]);
+        tabRedirectSpy = sinon.stub(Tab.prototype, 'redirectIfBlocked');
         require('../../app/js/background.js');
     });
 
@@ -24,10 +24,12 @@ describe('background', () => {
     });
 
     describe('when a tab is updated', () => {
-        it('should call redirectIfBlocked on the created tab', () => {
-            chrome.tabs.onUpdated.dispatch({url: 'my-url'});
-            assert.ok(chrome.tabs.query.withArgs({active: true, lastFocusedWindow: true}).calledOnce);
-            assert.ok(tabSpy.calledOnce);
+        it('should call redirectIfBlocked on the created tab', async () => {
+            sinon.stub(Tab, 'current').returns(tab);
+
+            await chrome.tabs.onUpdated.dispatch({url: 'my-url'});
+
+            assert.calledOn(tabRedirectSpy, tab);
         });
     });
 
