@@ -7,7 +7,7 @@ const SiteBlocker = require('./site_blocker.js');
  * Listens for click action on the save button
  * Pulls the contents of the input field and adds the url from the input field to the user's list of blocked sites
  */
-document.getElementById('block-save-button').addEventListener('click', (event) => {
+document.getElementById('block-save-button').addEventListener('click', async (event) => {
     event.stopImmediatePropagation();
 
     var inputs = Array.from(document.getElementsByClassName('block-site-input'));
@@ -17,9 +17,12 @@ document.getElementById('block-save-button').addEventListener('click', (event) =
         return item !== null && item !== '';
     });
 
-    SiteBlocker.block(urls, () => {
+    try {
+        await SiteBlocker.block(urls);
         window.location.href = '/app/views/status.html';
-    });
+    } catch (error) {
+        // show error notice and log error
+    }
 }, true);
 
 document.getElementById('add-another-button').addEventListener('click', (event) => {

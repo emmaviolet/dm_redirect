@@ -25,7 +25,6 @@ class Tab {
     }
 
     static async current() {
-        // do we need to explicitly state promise?
         return new Promise((resolve) => {
             chrome.tabs.query({active: true, lastFocusedWindow: true}, (tabs) => {
                 var tab = new Tab(tabs[0]);

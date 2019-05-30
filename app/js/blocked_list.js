@@ -8,7 +8,6 @@ const SiteBlocker = require('./site_blocker.js');
  */
 var listForItems = (items) => {
     if (!Array.isArray(items) || !items.length) {
-        // This shouldn't happen so in the future we probably want to log an issue
         return 'You have no blocked sites';
     }
 
@@ -36,14 +35,16 @@ var populateView = () => {
     chrome.storage.local.get(['blockedSites'], (items) => {
         document.getElementById('blocked-sites-list-content').innerHTML = listForItems(items.blockedSites);
 
-        document.getElementById('blocked-sites-list-content').addEventListener('click', (event) => {
+        document.getElementById('blocked-sites-list-content').addEventListener('click', async (event) => {
             if (event.target && event.target.matches('a')) {
 
                 var url = event.target.id.replace('unblock-button-', '');
-                SiteBlocker.unblock([url], () => {
+                try {
+                    await SiteBlocker.unblock([url]);
                     populateView();
-                });
-
+                } catch (error) {
+                    // log error and show error notice
+                }
             }
         });
     });

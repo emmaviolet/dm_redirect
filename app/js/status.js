@@ -10,12 +10,11 @@ const Tab = require('./tab.js');
 var blockCurrentSite = async () => {
     try {
         var tab = await Tab.current();
-
         var hostname = new URL(tab.url).hostname;
-        SiteBlocker.block([hostname], () => {
-            tab.redirectIfBlocked();
-            location.reload();
-        });
+
+        await SiteBlocker.block([hostname]);
+        tab.redirectIfBlocked();
+        location.reload();
     } catch (error) {
         // Log the error when we have error logging
         // Show a nice error view
