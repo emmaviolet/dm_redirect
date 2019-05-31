@@ -16,7 +16,7 @@
   "scripts": {
     "circle": "npm run lint && npm run specs && npm run headless_features",
     "features": "testcafe chrome \"test/features/**.js\"",
-    "headless_features": "testcafe chrome:headless \"test/features/**.js\" -r xunit:/tmp/test-results/res.xml",
+    "headless_features": "testcafe chrome:headless \"test/features/**.js\"",
     "lint": "eslint app/js/**.js test/*/**.js",
     "start": "browserify-directory app/js lib",
     "test": "npm run specs && npm run features",
