@@ -34,7 +34,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm run circle
-
-      - store_test_results:
-          path: /tmp/test-results
+      - run: npm run lint
+      - run: npm run specs
+      - run: npm run headless_features

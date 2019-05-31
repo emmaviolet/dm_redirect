@@ -10,11 +10,9 @@
     "mocha": "^6.1.4",
     "sinon": "^7.1.0",
     "sinon-chrome": "^3.0.1",
-    "testcafe": "^1.2.0",
-    "testcafe-reporter-xunit": "^2.1.0"
+    "testcafe": "^1.2.0"
   },
   "scripts": {
-    "circle": "npm run lint && npm run specs && npm run headless_features",
     "features": "testcafe chrome \"test/features/**.js\"",
     "headless_features": "testcafe chrome:headless \"test/features/**.js\"",
     "lint": "eslint app/js/**.js test/*/**.js",
