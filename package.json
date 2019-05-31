@@ -10,14 +10,17 @@
     "mocha": "^6.1.4",
     "sinon": "^7.1.0",
     "sinon-chrome": "^3.0.1",
-    "testcafe": "^1.2.0"
+    "testcafe": "^1.2.0",
+    "testcafe-reporter-xunit": "^2.1.0"
   },
   "scripts": {
+    "circle": "npm run lint && npm run specs && npm run headless_features",
+    "features": "testcafe chrome \"test/features/**.js\"",
+    "headless_features": "testcafe chrome:headless \"test/features/**.js\" -r xunit:/tmp/test-results/res.xml",
+    "lint": "eslint app/js/**.js test/*/**.js",
     "start": "browserify-directory app/js lib",
-    "feature_test": "testcafe chrome \"test/features/**.js\"",
-    "unit_test": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\"",
-    "test": "npm run unit_test && npm run feature_test",
-    "lint": "eslint app/js/**.js test/*/**.js"
+    "test": "npm run specs && npm run features",
+    "specs": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\""
   },
   "repository": {
     "type": "git",
