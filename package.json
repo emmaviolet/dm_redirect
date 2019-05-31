@@ -9,12 +9,15 @@
     "eslint": "^5.16.0",
     "mocha": "^6.1.4",
     "sinon": "^7.1.0",
-    "sinon-chrome": "^3.0.1"
+    "sinon-chrome": "^3.0.1",
+    "testcafe": "^1.2.0"
   },
   "scripts": {
     "start": "browserify-directory app/js lib",
-    "test": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\"",
-    "lint": "eslint app/js/**.js test/specs/**.js"
+    "feature_test": "testcafe chrome \"test/features/**.js\"",
+    "unit_test": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\"",
+    "test": "npm run unit_test && npm run feature_test",
+    "lint": "eslint app/js/**.js test/*/**.js"
   },
   "repository": {
     "type": "git",
