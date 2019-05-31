@@ -2,6 +2,8 @@
 
 Source code for Chrome browser extension [DM Redirect](https://chrome.google.com/webstore/detail/pfbdhjecpnbopodopafogoggcbpojdci)
 
+[![CircleCI](https://circleci.com/gh/emmaviolet/dm_redirect.svg?style=svg)](https://circleci.com/gh/emmaviolet/dm_redirect)
+
 ### Useful documentation
 
 Things you can do with tabs in chrome extensions: https://developer.chrome.com/extensions/tabs
