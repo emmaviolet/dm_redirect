@@ -22,7 +22,7 @@ h5 {
   background-color: #D3D5D4;
   border: 2px solid #817F82;
   padding: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 input {
@@ -51,7 +51,7 @@ input {
 
 .alert-box {
   padding: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .alert-box.primary {
