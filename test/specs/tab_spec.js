@@ -125,37 +125,63 @@ describe('Tab', () => {
     });
 
     describe('#isBlockable', () => {
-        beforeEach(() => {
-            chrome.storage.local.get.yields({redirectUrl: 'theguardian.com', blockedSites: ['facebook.com', 'website.co.uk']});
-        });
-
-        describe('if the tab url is the redirectUrl', () => {
-            it('returns false', async () => {
-                var tab = new Tab({id: 185, url: 'https://theguardian.com'})
-                var isBlockable = await tab.isBlockable()
-
-                assert.match(isBlockable, false)
-            });
-        });
-
         describe('if the tab url does not look like a url', () => {
             it('returns false', async () => {
                 var tab = new Tab({id: 107, url: 'chrome://extensions'})
                 var isBlockable = await tab.isBlockable()
 
                 assert.match(isBlockable, false)
-            });
-        });
+            })
+        })
 
-        describe('if the tab url looks like a url and is not the redirect url', () => {
-            it('returns true', async () => {
-                var tab = new Tab({id: 156, url: 'https://dailymail.co.uk'})
-                var isBlockable = await tab.isBlockable()
-
-                assert.match(isBlockable, true)
+        describe('if the user has set their redirectUrl', () => {
+            beforeEach(() => {
+                chrome.storage.local.get.yields({redirectUrl: 'google.com'});
             });
-        });
-    });
+
+            describe('if the tab url is the redirectUrl', () => {
+                it('returns false', async () => {
+                    var tab = new Tab({id: 185, url: 'https://google.com'})
+                    var isBlockable = await tab.isBlockable()
+
+                    assert.match(isBlockable, false)
+                })
+            })
+
+            describe('if the tab url is not the redirectUrl', () => {
+                it('returns true', async () => {
+                    var tab = new Tab({id: 107, url: 'https://guardian.com'})
+                    var isBlockable = await tab.isBlockable()
+
+                    assert.match(isBlockable, true)
+                })
+            })
+        })
+
+        describe('if the user has not set their redirectUrl', () => {
+            beforeEach(() => {
+                chrome.storage.local.get.yields({});
+            });
+
+            describe('if the tab url is the default redirectUrl', () => {
+                it('returns false', async () => {
+                    var tab = new Tab({id: 196, url: 'https://theguardian.com'})
+                    var isBlockable = await tab.isBlockable()
+
+                    assert.match(isBlockable, false)
+                })
+            })
+
+            describe('if the tab url is not the default redirectUrl', () => {
+                it('returns true', async () => {
+                    var tab = new Tab({id: 212, url: 'https://dailymail.co.uk'})
+                    var isBlockable = await tab.isBlockable()
+
+                    assert.match(isBlockable, true)
+                })
+            })
+        })
+    })
 
     describe('.current', () => {
         beforeEach(() => {
