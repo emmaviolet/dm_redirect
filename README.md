@@ -24,6 +24,6 @@ Chrome does not like us when we make browserify a dev dependency because some .p
 ### Deployment instructions
 
 1) Update version number (but not manifest_version number) in manifest.json
-1) Create zip file using command `zip -r dm_redirect dm_redirect` from parent folder
+1) ~~Create zip file using command `zip -r dm_redirect dm_redirect` from parent folder~~ Temporarily use `zip -r dm_redirect dm_redirect -x dm_redirect/node_modules/\* -x dm_redirect/\.git/\* -x dm_redirect/\.circleci/\* -x dm_redirect/cypress/\* -x dm_redirect/test/\*` to prevent the zip file from getting too huge.
 1) Edit the existing extension from the chrome [developer dashboard](https://chrome.google.com/webstore/developer/dashboard)
 1) Upload the new zip file and publish
