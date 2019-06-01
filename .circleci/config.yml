@@ -36,4 +36,3 @@ jobs:
       # run tests!
       - run: npm run lint
       - run: npm run specs
-      - run: npm run headless_features
