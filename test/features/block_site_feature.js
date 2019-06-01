@@ -7,6 +7,7 @@ test('Block sites', async t => {
     await t
         // .expect(Selector('#empty-view').visible).ok()
         .expect(Selector('#status-view').visible).notOk()
+        .debug()
 
         // .typeText('#developer-name', 'John Smith')
         // .click('#submit-button')

@@ -6,18 +6,16 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
+    "cypress-browser-extension-plugin": "^0.1.0",
     "eslint": "^5.16.0",
     "mocha": "^6.1.4",
     "sinon": "^7.1.0",
-    "sinon-chrome": "^3.0.1",
-    "testcafe": "^1.2.0"
+    "sinon-chrome": "^3.0.1"
   },
   "scripts": {
-    "features": "testcafe chrome \"test/features/**.js\"",
-    "headless_features": "testcafe chrome:headless \"test/features/**.js\"",
     "lint": "eslint app/js/**.js test/*/**.js",
     "start": "browserify-directory app/js lib",
-    "test": "npm run specs && npm run features",
+    "test": "npm run specs",
     "specs": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\""
   },
   "repository": {
