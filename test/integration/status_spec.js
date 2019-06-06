@@ -1,10 +1,5 @@
-/*global describe, before, it, after, assert */
+/*global after, assert, before, boot, browser, describe, extensionPage, it */
 'use strict';
-
-const puppeteer = require('puppeteer');
-
-let extensionPage = null;
-let browser = null;
 
 describe('Status View', function() {
     this.timeout(20000); // default is 2 seconds and that may not be enough to boot browsers and pages.
@@ -40,17 +35,3 @@ describe('Status View', function() {
         await browser.close();
     });
 });
-
-var boot = async () => {
-    const extensionID = 'lfoeajgcchlidpicbabpmckkejpckcfb';
-    const extensionPopupHtml = 'app/views/status.html';
-
-    browser = await puppeteer.launch({
-        headless: false,
-        args: [
-        `--disable-extensions-except=.`,
-        `--load-extension=.`
-    ]})
-    extensionPage = await browser.newPage()
-    await extensionPage.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`);
-};
