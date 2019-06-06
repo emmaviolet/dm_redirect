@@ -1,37 +1,39 @@
-/*global after, assert, before, boot, browser, describe, extensionPage, it */
+/*global after, assert, before, boot, browser, describe, page, it, tester */
 'use strict';
 
-describe('Status View', function() {
-    this.timeout(20000); // default is 2 seconds and that may not be enough to boot browsers and pages.
-    before(async function() {
+describe('Status View', function () { // cannot use this.timeout inside arrow functions
+    this.timeout(40000); // default is 2 seconds and that may not be enough to boot browsers and pages.
+    before(async () => {
         await boot();
-    });
+    })
 
-    describe('When the user has not previously loaded the extension', async function() {
-        it('shows the empty view', async function() {
-            const emptyView = await extensionPage.$('div#empty-view');
-            assert.ok(emptyView);
+    describe('On first load', async () => {
+        it('looks as expected', async () => {
+            const result = await tester(page, 'screenshots/empty-view')
 
-            const display = await extensionPage.evaluate(() =>
-                getComputedStyle(document.querySelector('div#empty-view')).display
-            );
-
-            assert.equal(display, 'block');
+            assert.equal(result, true);
         })
 
-        it('does not show the status view', async function() {
-            const statusView = await extensionPage.$('div#status-view');
-            assert.ok(statusView);
+        it('links to block sites view', async () => {
+            const blockSitesButton = await page.evaluate(() =>
+                document.querySelector("a[href='block_sites.html']")
+            )
 
-            const display = await extensionPage.evaluate(() =>
-                getComputedStyle(document.querySelector('div#status-view')).display
-            );
-
-            assert.equal(display, 'none');
+            // ideally would check if these are visible and enabled
+            // but need to implement a method for that
+            assert.ok(blockSitesButton)
         })
-    });
 
-    after(async function() {
+        it('links to redirect_settings', async () => {
+            const redirectButton = await page.evaluate(() =>
+                document.querySelector("a[href='redirect_settings.html']")
+            )
+
+            assert.ok(redirectButton)
+        })
+    })
+
+    after(async () => {
         await browser.close();
     });
 });

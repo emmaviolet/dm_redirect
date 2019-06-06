@@ -9,6 +9,7 @@
     "eslint": "^5.16.0",
     "mocha": "^6.1.4",
     "puppeteer": "^1.17.0",
+    "puppeteer-screenshot-tester": "^1.1.0",
     "sinon": "^7.1.0",
     "sinon-chrome": "^3.0.1"
   },

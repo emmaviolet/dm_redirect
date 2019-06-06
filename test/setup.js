@@ -1,24 +1,27 @@
-const chai = require('chai');
-const puppeteer = require('puppeteer');
-const sinon = require('sinon');
+const chai = require('chai')
+const puppeteer = require('puppeteer')
+const sinon = require('sinon')
+const ScreenshotTester = require('puppeteer-screenshot-tester')
 
-global.assert = chai.assert;
-global.sinon = sinon;
-global.sinon.assert.expose(global.assert, {prefix: ''});
+global.assert = chai.assert
+global.sinon = sinon
+global.sinon.assert.expose(global.assert, {prefix: ''})
 
-global.extensionPage = null;
-global.browser = null;
+global.browser = null
+global.extensionID = 'lfoeajgcchlidpicbabpmckkejpckcfb'
+global.page = null
+global.tester = null
 
 global.boot = async () => {
-    const extensionID = 'lfoeajgcchlidpicbabpmckkejpckcfb';
-    const extensionPopupHtml = 'app/views/status.html';
-
     global.browser = await puppeteer.launch({
         headless: false,
+        slowMo: 2000,
         args: [
         `--disable-extensions-except=.`,
         `--load-extension=.`
     ]})
-    global.extensionPage = await global.browser.newPage()
-    await global.extensionPage.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`);
+    global.page = await global.browser.newPage()
+    global.tester = await ScreenshotTester()
+
+    await global.page.goto(`chrome-extension://${global.extensionID}/app/views/status.html`)
 };
