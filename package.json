@@ -6,9 +6,9 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
-    "cypress-browser-extension-plugin": "^0.1.0",
     "eslint": "^5.16.0",
     "mocha": "^6.1.4",
+    "puppeteer": "^1.17.0",
     "sinon": "^7.1.0",
     "sinon-chrome": "^3.0.1"
   },
@@ -16,7 +16,7 @@
     "lint": "eslint app/js/**.js test/*/**.js",
     "start": "browserify-directory app/js lib",
     "test": "npm run specs",
-    "specs": "mocha --require ./test/setup.js --recursive -R dot \"test/specs/*_spec.js\""
+    "specs": "mocha --require ./test/setup.js --recursive -R dot \"test/*/*_spec.js\""
   },
   "repository": {
     "type": "git",
