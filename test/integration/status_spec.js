@@ -9,7 +9,7 @@ describe('Status View', function () { // cannot use this.timeout inside arrow fu
 
     describe('On first load', async () => {
         it('looks as expected', async () => {
-            const result = await tester(page, 'screenshots/empty-view')
+            const result = await tester(page, 'screenshots/first-view')
 
             assert.equal(result, true);
         })

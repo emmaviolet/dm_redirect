@@ -40,20 +40,10 @@ describe('Tab', () => {
                 chrome.storage.local.get.yields({});
             });
 
-            describe('and tab url is the default blocked site dailymail.co.uk', () => {
-                it('redirects to the default redirect url theguardian.com', () => {
-                    var tab = new Tab({id: 400, url: 'https://dailymail.co.uk'});
-                    tab.redirectIfBlocked();
-                    assert.ok(chrome.tabs.update.withArgs(400, {url: 'http://theguardian.com'}).calledOnce);
-                });
-            });
-
-            describe('and tab url is not the default blocked site dailymail.co.uk', () => {
-                it('does not redirect', () => {
-                    var tab = new Tab({id: 444, url: 'https://google.com'});
-                    tab.redirectIfBlocked();
-                    assert.ok(chrome.tabs.update.withArgs(444, {url: 'http://theguardian.com'}).notCalled);
-                });
+            it('does not redirect', () => {
+                var tab = new Tab({id: 444, url: 'https://google.com'});
+                tab.redirectIfBlocked();
+                assert.ok(chrome.tabs.update.withArgs(444, {url: 'http://theguardian.com'}).notCalled);
             });
         });
 
@@ -84,20 +74,10 @@ describe('Tab', () => {
                 chrome.storage.local.get.yields({redirectUrl: 'ft.com'});
             });
 
-            describe('and tab url is the default blocked site dailymail.co.uk', () => {
-                it('redirects to the http version of the redirect url set', () => {
-                    var tab = new Tab({id: 199, url: 'https://dailymail.co.uk'});
-                    tab.redirectIfBlocked();
-                    assert.ok(chrome.tabs.update.withArgs(199, {url: 'http://ft.com'}).calledOnce);
-                });
-            });
-
-            describe('and tab url is not the default blocked site dailymail.co.uk', () => {
-                it('does not redirect', () => {
-                    var tab = new Tab({id: 197, url: 'https://facebook.com'});
-                    tab.redirectIfBlocked();
-                    assert.ok(chrome.tabs.update.withArgs(197, {url: 'http://ft.com'}).notCalled);
-                });
+            it('does not redirect', () => {
+                var tab = new Tab({id: 197, url: 'https://facebook.com'});
+                tab.redirectIfBlocked();
+                assert.ok(chrome.tabs.update.withArgs(197, {url: 'http://ft.com'}).notCalled);
             });
         });
 
