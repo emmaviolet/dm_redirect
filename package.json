@@ -7,7 +7,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "puppeteer": "^1.17.0",
     "puppeteer-screenshot-tester": "^1.1.0",
     "sinon": "^7.1.0",
