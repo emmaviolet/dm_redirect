@@ -117,3 +117,28 @@ input {
   border-top: 1px dashed black;
   margin-top: 1px;
 }
+
+.error-message {
+  background-color: #ffebee;
+  border: 2px solid #EE220C;
+  color: #c62828;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.success-message {
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+  color: #2e7d32;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input.error {
+  border: 2px solid #EE220C;
+  background-color: #ffebee;
+}

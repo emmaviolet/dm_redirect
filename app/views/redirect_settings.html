@@ -10,9 +10,12 @@
         <div class="input-box">
             <div class="input-title-box">Redirect site</div>
             <div class="input-box-content">
-                <input id="redirect-url-input" class="u-full-width" type="text">
+                <div id="error-message" class="error-message" style="display: none;"></div>
+                <div id="success-message" class="success-message" style="display: none;">Redirect URL saved!</div>
+                
+                <input id="redirect-url-input" class="u-full-width" type="text" placeholder="e.g., theguardian.com">
 
-                <a href="status.html" id="redirect-save-button" class="button alert-button half-width left">Save</a>
+                <a href="#" id="redirect-save-button" class="button alert-button half-width left">Save</a>
                 <a href="status.html" class="button secondary-button half-width right">Back</a>
             </div>
         </div>

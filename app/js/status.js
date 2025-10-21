@@ -16,8 +16,12 @@ var blockCurrentSite = async () => {
         tab.redirectIfBlocked();
         location.reload();
     } catch (error) {
-        // Log the error when we have error logging
-        // Show a nice error view
+        // Show error message to user
+        if (error.message && error.message.includes('redirect URL')) {
+            alert('Cannot block this site: ' + error.message);
+        } else {
+            alert('Failed to block site. Please try again.');
+        }
     }
 };
 
