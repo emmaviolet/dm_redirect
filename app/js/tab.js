@@ -1,6 +1,8 @@
 /*global chrome */
 'use strict';
 
+const { DEFAULT_REDIRECT_URL } = require('./constants.js');
+
 class Tab {
     constructor(attributes) {
         this.id = attributes.id
@@ -18,7 +20,7 @@ class Tab {
 
         return new Promise((resolve) => {
             chrome.storage.local.get(['redirectUrl'], (items) => {
-                var redirectUrl = items.redirectUrl || 'github.com'
+                var redirectUrl = items.redirectUrl || DEFAULT_REDIRECT_URL
                 this.url.includes(redirectUrl) ? resolve(false) : resolve(true)
             })
         })
@@ -30,7 +32,7 @@ class Tab {
     redirectIfBlocked() {
         chrome.storage.local.get(['blockedSites', 'redirectUrl'], (items) => {
             var blockedSites = items.blockedSites || []
-            var redirectUrl = items.redirectUrl ? `http://${items.redirectUrl}` : 'http://github.com'
+            var redirectUrl = items.redirectUrl ? `http://${items.redirectUrl}` : `http://${DEFAULT_REDIRECT_URL}`
 
             blockedSites.forEach((item) => {
                 if (this.url.includes(item)) {

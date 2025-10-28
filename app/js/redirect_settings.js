@@ -1,12 +1,14 @@
 /*global chrome */
 'use strict';
 
+const { DEFAULT_REDIRECT_URL } = require('./constants.js');
+
 /*
  * Populates the input field with the user's current chosen redirect url
  */
 var populateRedirectInput = () => {
     chrome.storage.local.get('redirectUrl', (items) => {
-        var redirectUrl = items.redirectUrl || 'github.com';
+        var redirectUrl = items.redirectUrl || DEFAULT_REDIRECT_URL;
 
         var redirectInput = document.getElementById('redirect-url-input');
         redirectInput.value = redirectUrl;
