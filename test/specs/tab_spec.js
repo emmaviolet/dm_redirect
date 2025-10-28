@@ -53,10 +53,10 @@ describe('Tab', () => {
             });
 
             describe('and tab url is one of the blocked sites set', () => {
-                it('redirects to the default redirect url theguardian.com', () => {
+                it('redirects to the default redirect url github.com', () => {
                     var tab = new Tab({id: 200, url: 'https://website.co.uk'});
                     tab.redirectIfBlocked();
-                    assert.ok(chrome.tabs.update.withArgs(200, {url: 'http://theguardian.com'}).calledOnce);
+                    assert.ok(chrome.tabs.update.withArgs(200, {url: 'http://github.com'}).calledOnce);
                 });
             });
 
@@ -64,7 +64,7 @@ describe('Tab', () => {
                 it('does not redirect', () => {
                     var tab = new Tab({id: 250, url: 'https://dailymail.co.uk'});
                     tab.redirectIfBlocked();
-                    assert.ok(chrome.tabs.update.withArgs(250, {url: 'http://theguardian.com'}).notCalled);
+                    assert.ok(chrome.tabs.update.withArgs(250, {url: 'http://github.com'}).notCalled);
                 });
             });
         });
@@ -145,7 +145,7 @@ describe('Tab', () => {
 
             describe('if the tab url is the default redirectUrl', () => {
                 it('returns false', async () => {
-                    var tab = new Tab({id: 196, url: 'https://theguardian.com'})
+                    var tab = new Tab({id: 196, url: 'https://github.com'})
                     var isBlockable = await tab.isBlockable()
 
                     assert.match(isBlockable, false)

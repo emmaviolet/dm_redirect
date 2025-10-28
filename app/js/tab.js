@@ -18,7 +18,7 @@ class Tab {
 
         return new Promise((resolve) => {
             chrome.storage.local.get(['redirectUrl'], (items) => {
-                var redirectUrl = items.redirectUrl || 'theguardian.com'
+                var redirectUrl = items.redirectUrl || 'github.com'
                 this.url.includes(redirectUrl) ? resolve(false) : resolve(true)
             })
         })
@@ -30,7 +30,7 @@ class Tab {
     redirectIfBlocked() {
         chrome.storage.local.get(['blockedSites', 'redirectUrl'], (items) => {
             var blockedSites = items.blockedSites || []
-            var redirectUrl = items.redirectUrl ? `http://${items.redirectUrl}` : 'http://theguardian.com'
+            var redirectUrl = items.redirectUrl ? `http://${items.redirectUrl}` : 'http://github.com'
 
             blockedSites.forEach((item) => {
                 if (this.url.includes(item)) {
